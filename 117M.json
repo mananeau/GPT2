@@ -21,7 +21,7 @@
     "eval_batch_size": 32,
     "iterations": 500,
     "n_embd": 768,
-    "input": "openwebtext",
+    "input": "wiki",
     "model": "GPT2",
     "model_path": "gs://connors-models/GPT2-117M-test-newinit",
     "n_ctx": 1024,
