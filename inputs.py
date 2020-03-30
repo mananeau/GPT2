@@ -38,6 +38,16 @@ def openwebtext_longbiased(params, eval=False):
 
     return dataset
 
+# Standard wiki dataset
+def wiki(params, eval=False):
+    if not eval:
+        numbers = [0, 3, 4, 5, 6, 7, 8, 9] # A random subset of files for train
+    else:
+        numbers = [1, 2] # Random subset for eval
+    files = [os.path.join(params["data_path"], "my-custom-data_{}.tfrecords".format(str(i))) for i in numbers] # Generates the list of files
+
+    return bpe_text(params["batch_size"], files, amount=params["n_ctx"], iterations=params["iterations"], stitch=9, batch=True)
+
 # A generic function to take in any tfrecords files filled with the correct BPE text
 def generic_text(params):
     # params["datasets"] = [([files], weight)]
