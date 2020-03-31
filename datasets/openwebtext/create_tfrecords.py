@@ -10,15 +10,15 @@ from tqdm import tqdm
 
 import encoder
 
-base_dir = "/home/connor/2/newspaper" # Path to where your .txt files are located
+base_dir = "gs://pre-training-bucket/german_gpt2/pretraining_data/raw/shards_wiki" # Path to where your .txt files are located
 files_per = 175000 # 175000 ~ 200-300MB
-name = "openwebtext-newspaper" # Name of output files will be name_i.tfrecords where i is the number of the file
-output_dir = "/home/connor/out"
+name = "wiki" # Name of output files will be name_i.tfrecords where i is the number of the file
+output_dir = "gs://pre-training-bucket/german_gpt2/pretraining_data/wiki_tfrecords"
 log_dir = "logs"
 files = glob.glob(os.path.join(base_dir, "**/*.txt"))
 processes = 64 # Number of encoding processes to run
 encoder_path = "gs://openwebtext/stuff/encoder" # Path to encoder files
-minimum_size = 25
+minimum_size = 128
 
 def _int64_feature(value):
     """Returns an int64_list from a bool / enum / int / uint."""
